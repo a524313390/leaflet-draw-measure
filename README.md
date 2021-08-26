@@ -63,4 +63,5 @@ import 'leaflet-measure-path/leaflet-measure-path.css';
 </script>
 
 </html>
+具体请查看example文件夹下面的index.html
 ```
