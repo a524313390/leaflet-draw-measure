@@ -1,15 +1,16 @@
 {
     "name": "leaflet-draw-measure",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "leaflet动态测量",
     "main": "src/index.js",
     "types": "example/index.d.ts",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/a524313390/leaflet-draw-measure"
     },
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "publish": "npm publish"
     },
     "keywords": [
         "leaflet",
