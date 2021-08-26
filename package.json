@@ -1,0 +1,25 @@
+{
+    "name": "leaflet-draw-measure",
+    "version": "1.1.0",
+    "description": "leaflet动态测量",
+    "main": "src/index.js",
+    "types": "example/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "scripts": {
+        "build": "tsc"
+    },
+    "keywords": [
+        "leaflet",
+        "leaflet测量",
+        "leaflet测距",
+        "leaflet侧面",
+        "leaflet点",
+        "leaflet线",
+        "leaflet面"
+    ],
+    "author": "pang bo <a11523518@126.com>",
+    "license": "ISC"
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="./leaflet-measure-path.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
+        integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
+        crossorigin=""></script>
+    <script src="./leaflet-measure-path.js"></script>
+
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .draw-leaflet-tip {
+        background-color: rgba(0, 0, 0, 0.6);
+        background-clip: padding-box;
+        color: #fff;
+        display: block;
+        font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 1px 3px;
+        position: absolute;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 6;
+        border-color: rgba(0, 0, 0, 0.6);
+
+    }
+
+
+
+    .leaflet-tooltip-left:before {
+
+
+        border-left-color: rgba(0, 0, 0, 0.6);
+    }
+
+
+    .leaflet-tooltip-right:before {
+
+        border-right-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .tools {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+        z-index: 500;
+
+    }
+
+    .tools li {
+        list-style: none;
+        display: inline-block;
+        width: 50px;
+        cursor: pointer;
+        background-color: #ccc;
+    }
+</style>
+
+<body>
+    <div id="map"></div>
+    <div class="tools">
+        <li>园</li>
+        <li>线</li>、
+        <li>矩形</li>
+        <li>面</li>
+
+        <li>清除</li>
+    </div>
+</body>
+<script type="module">
+    import MeasureDraw from '../src/index.js'
+    console.log(MeasureDraw);
+    var exports = {}
+    var map = L.map('map').setView([37.75, -122.23], 10);
+
+    L.esri.basemapLayer('Topographic').addTo(map);
+
+
+
+    const draw = new MeasureDraw({ map });
+
+
+
+
+    let dom = document.getElementsByClassName('tools')[0].getElementsByTagName('li');
+    dom[0].onclick = function () {
+        draw.createCricle();
+    }
+    dom[1].onclick = function () {
+        draw.createLine();
+    }
+    dom[2].onclick = function () {
+        draw.createRectangle();
+    }
+    dom[3].onclick = function () {
+        draw.createPolygon();
+    }
+    dom[4].onclick = function () {
+        draw.remove();
+    }
+</script>
+
+</html>
