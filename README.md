@@ -32,7 +32,7 @@ import 'leaflet-measure-path/leaflet-measure-path.css';
 <script type="module">
     import MeasureDraw from '../src/index.js'
     console.log(MeasureDraw);
-    var exports = {}
+
     var map = L.map('map').setView([37.75, -122.23], 10);
 
     L.esri.basemapLayer('Topographic').addTo(map);
