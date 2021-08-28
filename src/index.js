@@ -9,6 +9,7 @@ export default class MeasureDraw {
   }
   createCricle() {
     this.map.on('click', (e) => {
+      this.map.doubleClickZoom.disable()
       const { latlng } = e
       this.map.on('mousemove', (event) => {
         this._circleMousemove(event, latlng)
@@ -35,6 +36,8 @@ export default class MeasureDraw {
     if (this.markerTip) {
       this.markerTip.remove()
     }
+    this.polyline = null
+    this.polygon = null
   }
   //提示框
   _toolTip(latlng) {
@@ -57,6 +60,7 @@ export default class MeasureDraw {
     this.contextmenu()
     const positionArr = [] //存储线的位置
     this.map.on('click', (e) => {
+      this.map.doubleClickZoom.disable()
       const { latlng } = e
       const { lat, lng } = latlng
       positionArr.push([lat, lng])
@@ -94,6 +98,7 @@ export default class MeasureDraw {
     this.contextmenu()
     const positionArr = [] //存储线的位置
     this.map.on('click', (e) => {
+      this.map.doubleClickZoom.disable()
       const { latlng } = e
       const { lat, lng } = latlng
       positionArr.push([lat, lng])
@@ -125,6 +130,7 @@ export default class MeasureDraw {
     this.contextmenu()
     const positionArr = [] //存储线的位置
     this.map.on('click', (e) => {
+      this.map.doubleClickZoom.disable()
       const { latlng } = e
       const { lat, lng } = latlng
       positionArr.push([lat, lng])
@@ -158,9 +164,10 @@ export default class MeasureDraw {
     })
   }
   remove() {
-    this.layerGroup.remove()
+    this.layerGroup.clearLayers()
     if (this.markerTip) {
       this.markerTip.remove()
     }
+    this.contextmenu()
   }
 }
