@@ -28,6 +28,7 @@ export default class MeasureDraw {
     }
     createCricle() {
         this.map.on('click', (e: any) => {
+            this.map.doubleClickZoom.disable()
             const { latlng } = e;
             this.map.on('mousemove', (event) => {
                 this._circleMousemove(event, latlng)
@@ -55,6 +56,8 @@ export default class MeasureDraw {
         if (this.markerTip) {
             this.markerTip.remove()
         }
+        this.polyline = null as any;
+        this.polygon = null as any;
     }
     //提示框
     private _toolTip(latlng: L.LatLng) {
@@ -75,6 +78,7 @@ export default class MeasureDraw {
 
 
         this.map.on('click', (e: any) => {
+            this.map.doubleClickZoom.disable()
             const { latlng } = e;
             const { lat, lng } = latlng;
             positionArr.push([lat, lng])
@@ -115,6 +119,7 @@ export default class MeasureDraw {
         this.contextmenu();
         const positionArr: L.LatLng[][] = [];//存储线的位置
         this.map.on('click', (e: any) => {
+            this.map.doubleClickZoom.disable()
             const { latlng } = e;
             const { lat, lng } = latlng;
             positionArr.push([lat, lng])
@@ -153,6 +158,7 @@ export default class MeasureDraw {
         this.contextmenu();
         const positionArr: L.LatLng[][] = [];//存储线的位置
         this.map.on('click', (e: any) => {
+            this.map.doubleClickZoom.disable()
             const { latlng } = e;
             const { lat, lng } = latlng;
             positionArr.push([lat, lng])
@@ -192,5 +198,6 @@ export default class MeasureDraw {
         if (this.markerTip) {
             this.markerTip.remove()
         }
+
     }
 }
