@@ -29,9 +29,10 @@ import 'leaflet-measure-path/leaflet-measure-path.css';
         <li>清除</li>
     </div>
 </body>
+ measure  是否显示面积，默认为true
 <script type="module">
     import MeasureDraw from '../src/index.js'
-    console.log(MeasureDraw);
+
 
     var map = L.map('map').setView([37.75, -122.23], 10);
 
